@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const $canvas = document.createElement('CANVAS');
+        $canvas.width = 500;
+        $canvas.height = 500;
+        document.body.appendChild($canvas);
+        const ctx = $canvas.getContext('2d');
+
+        var wedge = {
+            cx: 150, cy: 150,
+            radius: 100,
+            startAngle: -90 * (Math.PI / 180),
+            endAngle: 90 * (Math.PI / 180)
+        }
+
+        drawWedge(wedge, 'skyblue', 'gray', 4);
+
+        console.log(wedge);
+
+        function drawWedge(w, fill, stroke, strokewidth) {
+            const {cx,cy,radius,startAngle,endAngle} = wedge;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, radius, startAngle, endAngle + startAngle);
+            ctx.closePath();
+            ctx.fillStyle = fill;
+            ctx.fill();
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = strokewidth;
+            ctx.stroke();
+
+            /* 원 확인용 */
+            ctx.beginPath();
+            ctx.arc(w.cx,w.cy,w.radius,Math.PI * 2,false);
+            ctx.stroke();
+        }
+    </script>
+</body>
+
+</html>

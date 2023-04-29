@@ -1,0 +1,1 @@
+const {arrearsStats} = await fetch('./../sampleData.json').then(res=>res.json());

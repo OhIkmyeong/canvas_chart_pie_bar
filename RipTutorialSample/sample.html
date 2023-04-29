@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        window.onload = (function () {
+
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            ctx.lineWidth = 2;
+            ctx.font = '14px verdana';
+
+            var PI2 = Math.PI * 2;
+            var myColor = ["Green", "Red", "Blue"];
+            var myData = [30, 60, 10];
+            // var myData = [87.72,12.28];
+            var cx = 250;
+            var cy = 250;
+            var radius = 200;
+
+            pieChart(myData, myColor);
+
+            function pieChart(data, colors) {
+                var total = 0;
+                for (var i = 0; i < data.length; i++) {
+                    total += data[i];
+                }
+
+                var sweeps = []
+                for (var i = 0; i < data.length; i++) {
+                    sweeps.push(data[i] / total * PI2);
+                }
+
+                var accumAngle = 0;
+                for (var i = 0; i < sweeps.length; i++) {
+                    drawWedge(accumAngle, accumAngle + sweeps[i], colors[i], data[i]);
+                    accumAngle += sweeps[i];
+                }
+            }
+
+            function drawWedge(startAngle, endAngle, fill) {
+                // draw the wedge
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, radius, startAngle, endAngle, false);
+                ctx.closePath();
+                ctx.fillStyle = fill;
+                ctx.strokeStyle = 'black';
+                ctx.fill();
+                ctx.stroke();
+            }
+
+        }); // end $(function(){});
+    </script>
+</body>
+
+</html>
