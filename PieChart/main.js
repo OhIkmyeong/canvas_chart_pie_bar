@@ -1,4 +1,4 @@
-import { PieChart } from "./PieChart.js";
+import { PieChartBuilder } from "./PieChart.js";
 
 const dataList = {};
 dataList.arrearsStats = [
@@ -32,7 +32,7 @@ const gd = [
 
 /* 그리기 */
 dataPieList.forEach(dataPie => {
-    const $cv = new PieChart()
+    const $cv = new PieChartBuilder()
         .set_data_pie(dataPie)
         .set_gradient(gd)
         .init();

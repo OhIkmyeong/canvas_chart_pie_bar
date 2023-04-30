@@ -3,7 +3,7 @@
  * canvas로 Pie Chart를 만들어 반환합니다
  * 🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇🎇
  */
-export class PieChart {
+export class PieChartBuilder {
     constructor() {
         this.gradient = [];
         this.dataPie = [];
